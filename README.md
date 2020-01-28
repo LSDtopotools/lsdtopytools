@@ -79,15 +79,18 @@ pip install XXX
 where XXX is the newest wheel. To update `lsdtopytools`:
 
 ```
-cd wheels/lsdtt-xtensor-python
-pip install .
+cd wheels/lsdtopytools
+pip install --force-reinstall --no-deps XXX
 ```
+where XXX is the newest wheel.
 
 # Quick start
 
 I will put tutorial and example scripts and jupyter notebooks in the future.
 
 # Troubleshoots
+
+- **[LINUX] GLIBC error**: I am working on it, but basically your linux is older than the one with which I installed it and does not have as recent glibc. Good news is that there is a solution, bad news is that It will take me a bit of time to implement and you need to install from source. I need to build `manylinux2010` wheels which involve using docker, which is not compatible with any of my hardware without accessing the BIOS and I cannot.
 
 So far in early development stage, all of that code will evolve very rapidly and probably drastically. Contact `b.gailleton@sms.ed.ac.uk` for questions.
 
