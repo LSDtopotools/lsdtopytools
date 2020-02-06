@@ -1,8 +1,14 @@
 # lsdtopytools
 
-Repository for `lsdtopytools`. So far, it only contains instructions to install and wheels (python installers). Will evolve soon. Source code in the `LSDTT_development` repository. `lsdtt-xtensor-python` is a direct wrapper to the `c++` code and `lsdtopytools` a nicer `python` interface easier to use.
+Repository for `lsdtopytools`. So far, it only contains instructions to install and wheels (python installers). Will evolve soon. Source code in the `LSDTT_development` repository. `lsdtt-xtensor-python` is a direct wrapper to the `c++` code and `lsdtopytools` a nicer `python` interface easier to use. 
 
-# Installation
+`lsdtopytools` suite can be done using Docker or Anaconda, you have the choice, really.
+
+# Installation using docker
+
+See https://github.com/LSDtopotools/lsdtt_pytools_docker for intruction on how to install the Docker container.
+
+# Installation using `conda`
 
 ## Installation through `conda` and `pip`
 
