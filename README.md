@@ -17,7 +17,7 @@ Best installation is from `conda`, it has been tested for windows and different 
 First create a `conda` environment and activate it:
 
 ```
-conda create lsdtopytools python=3.7
+conda create -n lsdtopytools python=3.7
 
 conda activate lsdtopytools
 ```
@@ -32,6 +32,12 @@ We are now ready to install the wheels:
 
 ```
 cd wheels/lsdtt-xtensor-python
+ls
+```
+
+This will display the available wheels. One of them should correspond to your architecture (= computer type).
+
+```
 pip install lsdtt_xtensor_python-YYY-cp37-cp37m-XXX.whl
 ```
 where YYY is the latest version of lsdtt-xtensor-python, e.g. `0.0.3`, and XXX your architecture, e.g. `linux_x86_64` for linux 64 bits. Finally:
