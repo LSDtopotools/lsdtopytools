@@ -22,6 +22,13 @@ conda create -n lsdtopytools python=3.7
 conda activate lsdtopytools
 ```
 
+**RECOMENDED STEP** - *basically except if you have a specific reason not to do it*: you need to fix an annoying tendency of gdal to rely on messed up dependencies:
+```
+conda config --prepend channels defaults
+conda config --prepend channels conda-forge
+conda config --set channel_priority strict
+```
+
 Then install the required dependencies:
 
 ```
