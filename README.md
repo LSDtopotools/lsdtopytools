@@ -35,10 +35,16 @@ Then install the required dependencies:
 conda install -c conda-forge gdal rasterio geopandas matplotlib=3.1 numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python
 ```
 
-We are now ready to install the wheels:
+We are now ready to install the wheels, let's clone the github repository on the computer:
 
 ```
-cd wheels/lsdtt-xtensor-python
+git clone https://github.com/LSDtopotools/lsdtopytools
+```
+
+This downloads the ropository in the current folder, then you can navigate to teh wheels and list the files:
+
+```
+cd lsdtopytools/wheels/lsdtt-xtensor-python
 ls
 ```
 
