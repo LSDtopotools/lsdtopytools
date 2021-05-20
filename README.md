@@ -1,8 +1,18 @@
 # lsdtopytools
 
-Repository for `lsdtopytools`. So far, it only contains instructions to install and wheels (python installers). Will evolve soon. Source code in the `LSDTT_development` repository. `lsdtt-xtensor-python` is a direct wrapper to the `c++` code and `lsdtopytools` a nicer `python` interface easier to use. 
+Repository for `lsdtopytools`, a python wrapper on LSDTopoTools. It binds the c++ code with `lsdtt-xtensor` and expose it to `python` via `numpy`. It allows us to take advantage of both world: `c++` speed and python flexibility. `lsdtopytools` suite can be done using Docker or Anaconda.
 
-`lsdtopytools` suite can be done using Docker or Anaconda, you have the choice, really.
+This repository host the static version of the code available for installation, it is updated at each release (usually when we are publishing a new manuscript utilising new features). Tutorial and example notebooks can be found in [this dedicated repository](https://github.com/LSDtopotools/lsdtt_notebooks/tree/master/lsdtopytools).
+
+# Features
+
+- Raster i/o and basic operations
+- Preprocessing depressions (carving, filling, nodata, ...)
+- River extraction (drainage area threshold)
+- ksn from segmented profiles (Mudd et al. 2014)
+- concavity index (Mudd et al., 2018, Gailleton et al., 2021 (preprint))
+- polyfit metrics
+- ...
 
 # Installation using docker
 
@@ -12,63 +22,37 @@ See https://github.com/LSDtopotools/lsdtt_pytools_docker for intruction on how t
 
 ## Installation through `conda` and `pip`
 
-Best installation is from `conda`, it has been tested for windows and different linuxes. Other OSes will need to build from source (explanation bellow).
+You need first to have a valid installation of `anaconda` on your computer. I really reccomend `miniforge` [see readme here](https://github.com/conda-forge/miniforge) which guarentee a full open-source and open-license installation.
 
-First create a `conda` environment and activate it:
+Installation from `conda` has been tested for windows10, MacOS and different linuxes (ubuntu, Debian, Redhat, WSL). Other OSes will need to build from source (explanation bellow).
+
+First create a `conda` environment `with python <= 3.8` (3.9 will come shortly) and activate it:
 
 ```
-conda create -n lsdtopytools python=3.7
+conda create -n lsdtopytools python=3.8
 
 conda activate lsdtopytools
 ```
 
-**RECOMENDED STEP** - *basically except if you have a specific reason not to do it*: you need to fix an annoying tendency of gdal to rely on messed up dependencies:
+**RECOMENDED STEP IF YOU HAVE ANOTHER DISTRIBUTION THAN MINIFORGE**: you need to fix an annoying tendency of gdal to rely on messed up dependencies:
 ```
 conda config --prepend channels defaults
 conda config --prepend channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Then install the required dependencies:
+Then, you can install by simply running:
 
 ```
-conda install -c conda-forge gdal rasterio geopandas matplotlib=3.1 numpy scipy pytables numba feather-format pandas pip pybind11 xtensor xtensor-python
+conda install lsdtopytools
 ```
 
-We are now ready to install the wheels, let's clone the github repository on the computer:
-
-```
-git clone https://github.com/LSDtopotools/lsdtopytools
-```
-
-This downloads the ropository in the current folder, then you can navigate to teh wheels and list the files:
-
-```
-cd lsdtopytools/wheels/lsdtt-xtensor-python
-ls
-```
-
-This will display the available wheels. One of them should correspond to your architecture (= computer type).
-
-```
-pip install lsdtt_xtensor_python-YYY-cp37-cp37m-XXX.whl
-```
-where YYY is the latest version of lsdtt-xtensor-python, e.g. `0.0.3`, and XXX your architecture, e.g. `linux_x86_64` for linux 64 bits. Finally:
-
-```
-cd ../lsdtopytools
-pip install lsdtopytools-XXX-py2.py3-none-any.whl
-```
-
-where XXX is the latest version available. And everything is installed!
-
-## No compatible wheels for lsdtt-xtensor-python?
+## Something went wrong
 
 In that case you need to check several things:
-- You are on iOS, I do not own a mac and cannot generate the wheel, you need to generate it from source.
 - You are on a previously created conda environment and trying to install lsdtt-xtensor-python in it, check that you DO have `python=3.7.X`
-- You have a `32 bits` OS/processor, You need to install from source (also it's been like 15 years all the computers are 64 bits)
-- You are on an antiquated computer unable to get recent `libc`, `libc++` or `libstdc++`, there is nothing we can do unfortunately although I'd be surprised if it happens.
+- You have a `32 bits` OS/processor, You need to install from source (also it's been like 15 years all the computers are 64 bits, this is the reason we do not guarentee compatibility)
+- You are on an antiquated computer unable to get recent `libc`, `libc++` or `libstdc++`, there is nothing we can do unfortunately although I'd be surprised if it happens. We need `c++14` for `lsdtt-xtensor` and that is a hard-pass unfortunately.
 
 ## Installation from source
 
@@ -91,32 +75,10 @@ pip install .
 ```
 Done.
 
-# Updating the code
-
-So far I will post updated wheel in that repository, in the future I will create a more sofisticated and simpler installing method. To update the `lsdtt-xtensor-python`:
-
-```
-pip uninstall -y lsdtt-xtensor-python
-cd wheels/lsdtt-xtensor-python
-pip install XXX
-```
-
-where XXX is the newest wheel. To update `lsdtopytools`:
-
-```
-cd wheels/lsdtopytools
-pip install --force-reinstall --no-deps XXX
-```
-where XXX is the newest wheel.
-
-# Quick start
-
-I will put tutorial and example scripts and jupyter notebooks in the future.
-
 # Troubleshoots
 
 - **[LINUX] GLIBC error**: I am working on it, but basically your linux is older than the one with which I installed it and does not have as recent glibc. Good news is that there is a solution, bad news is that It will take me a bit of time to implement and you need to install from source. I need to build `manylinux2010` wheels which involve using docker, which is not compatible with any of my hardware without accessing the BIOS and I cannot.
 
-So far in early development stage, all of that code will evolve very rapidly and probably drastically. Contact `b.gailleton@sms.ed.ac.uk` for questions.
+So far in early development stage, all of that code will evolve very rapidly and probably drastically. Contact `boris.gailleton@gfz-potsdam.de` for questions.
 
 

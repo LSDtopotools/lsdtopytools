@@ -1,0 +1,16 @@
+Metadata-Version: 1.2
+Name: lsdtt-xtensor-python
+Version: 0.0.4.10
+Summary: This is an attempt to port LSDTT to Python
+Home-page: https://lsdtopotools.github.io
+Author: LSDTopoTools team -  Boris Gailleton
+Author-email: boris.gailleton@gfz-potsdam.de
+License: GNU General Public License v3
+Description: 
+        lsdtt_xtensor_python is a python binder for LSDTopoTools. It directly binds in-memory the c++ code in order to use it alongside with python. 
+        Not all the routines are binded yet as I am still working on it. See lsdviztools for a full use of all the tools with command line/driver files/indirect python bindings.
+        Note that this is an intermediate package: lsdtopotools is the c++ package, lsdtt_xtensor_python offers low-level bindings to lsdtopotools and finally lsdtopytools offers the automated user-friendly scripting use.
+        
+Keywords: lsdtt_xtensor_python
+Platform: UNKNOWN
+Requires-Python: >=3.7
