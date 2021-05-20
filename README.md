@@ -1,5 +1,7 @@
 # lsdtopytools
 
+[![DOI](https://zenodo.org/badge/235968220.svg)](https://zenodo.org/badge/latestdoi/235968220)
+
 Repository for `lsdtopytools`, a python wrapper on LSDTopoTools. It binds the c++ code with `lsdtt-xtensor` and expose it to `python` via `numpy`. It allows us to take advantage of both world: `c++` speed and python flexibility. `lsdtopytools` suite can be done using Docker or Anaconda.
 
 This repository host the static version of the code available for installation, it is updated at each release (usually when we are publishing a new manuscript utilising new features). Tutorial and example notebooks can be found in [this dedicated repository](https://github.com/LSDtopotools/lsdtt_notebooks/tree/master/lsdtopytools).
