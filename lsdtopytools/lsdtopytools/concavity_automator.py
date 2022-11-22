@@ -104,10 +104,13 @@ def process_basin(ls, **kwargs):
 	else:
 		name = prefix + "%s"%(number)
 
-	if(kwargs["precipitation_raster"] == ""):
+	if("precipitation_raster" not in kwargs):
 		precipitation = False
 	else:
-		precipitation = True
+		if(kwargs["precipitation_raster"] == ""):
+			precipitation = False
+		else:
+			precipitation = True
 	# I spent a significant amount of time preprocessing it, see SM
 	n_rivers = 0
 	dem_name ="%s.%s"%(name,kwargs["extension"])
