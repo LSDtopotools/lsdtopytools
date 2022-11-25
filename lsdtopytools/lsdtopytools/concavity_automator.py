@@ -104,6 +104,11 @@ def process_basin(ls, **kwargs):
 	else:
 		name = prefix + "%s"%(number)
 
+	if("path" not in kwargs):
+		kwargs["path"] = './'
+	else:
+		name = kwargs["path"] + name
+
 	if("precipitation_raster" not in kwargs):
 		precipitation = False
 	else:
@@ -117,7 +122,7 @@ def process_basin(ls, **kwargs):
 	if("overwrite_dem_name" in kwargs):
 		dem_name = kwargs["overwrite_dem_name"]
 
-	MD = lsd.LSDDEM(file_name = dem_name, already_preprocessed = True)
+	MD = lsd.LSDDEM(file_name = dem_name, path=kwargs["path"], already_preprocessed = True)
 	# Extracting basins
 	if(precipitation):
 		MD.CommonFlowRoutines( ingest_precipitation_raster = kwargs["precipitation_raster"], precipitation_raster_multiplier = 1, discharge = True)
@@ -127,7 +132,7 @@ def process_basin(ls, **kwargs):
 	MD.ExtractRiverNetwork( method = "area_threshold", area_threshold_min = area_threshold)
 	print("River extracted")
 	MD.DefineCatchment(  method="from_XY", X_coords = [X], Y_coords = [Y], coord_search_radius_nodes = 10 )#, X_coords = [X_coordinates_outlets[7]], Y_coords = [Y_coordinates_outlets[7]])
-	print("CAtchment defined")
+	print("Catchment defined")
 	MD.GenerateChi(theta = 0.4, A_0 = 1)
 	print("River_network_generated")
 	n_rivers = MD.df_base_river.source_key.unique().shape[0]
@@ -876,6 +881,10 @@ def plot_basin(ls, **kwargs):
 		name = prefix
 	else:
 		name = prefix + "%s"%(number)
+
+	if("path" in kwargs):
+		name = kwargs["path"] + name
+		
 
 
 	# Alright, loading the previous datasets
