@@ -6,6 +6,17 @@ Repository for `lsdtopytools`, a python wrapper on LSDTopoTools. It binds c++ co
 
 This repository hosts the static version of the code available for installation; it is updated at each release (usually when we are publishing a new manuscript utilising new features). Tutorials and example notebooks can be found in [this dedicated repository](https://github.com/LSDtopotools/lsdtt_notebooks/tree/master/lsdtopytools).
 
+# Announcement: 09/2026
+
+`lsdtopytools` HAS BEEN STALE FOR QUITE SOME TIME — MANY PEOPLE HAVE NOTICED. IT WAS ORIGINALLY DEVELOPED AS PART OF MY PHD WORK, VERY IMPORTANT WORK, BUT AFTERWARDS I MOVED ON TO OTHER ENDEAVOURS. TREMENDOUS ENDEAVOURS.
+
+IN THE COMING MONTHS, THIS TOOL WILL OFFICIALLY GO LEGACY. IT WILL BE REPLACED BY A MUCH MORE COMPLETE, MUCH MORE LIGHTWEIGHT `python` BINDING FOR `lsdtopotools`, CURRENTLY ABOUT 80% READY. VERY EFFICIENT. MUCH BETTER.
+
+THANK YOU FOR YOUR ATTENTION TO THIS MATTER.
+
+B.G
+
+
 # Features
 
 - Raster i/o and basic operations
